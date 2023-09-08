@@ -6,8 +6,8 @@
 
 ```json
 {
-  "Format": "editor.formatOnSave,editor.formatOnPaste,editor.formatOnType",
-  "Eslint": "eslint.enable"
+  "Eslint": "eslint.enable",
+  "Format": "editor.formatOnSave,editor.formatOnPaste",
 }
 ```
 

@@ -50,7 +50,7 @@
     "configuration": {
       "title": "setting-switch",
       "properties": {
-        "自定义配置": {
+        "settingSwitch": {
           "type": "object",
           "markdownDescription": "在`“项”`里输入名称，会展示在状态栏；在`“值”`里输入你想切换的配置项。注意：`用逗号分隔多个配置项；只支持值为布尔值的配置项`",
           "patternProperties": {
@@ -59,8 +59,8 @@
             }
           },
           "default": {
-            "Format": "editor.formatOnSave,editor.formatOnPaste,editor.formatOnType",
-            "Eslint": "eslint.enable"
+            "Eslint": "eslint.enable",
+            "Format": "editor.formatOnSave,editor.formatOnPaste"
           }
         }
       }
