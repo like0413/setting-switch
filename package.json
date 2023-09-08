@@ -1,0 +1,72 @@
+{
+  "name": "setting-switch",
+  "displayName": "Setting Switch",
+  "description": "Put button in statusbar to quickly switch settings",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/LeeKer0413/setting-switch.git"
+  },
+  "publisher": "like",
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "icon": "icon.png",
+  "keywords": [
+    "disable",
+    "toggle",
+    "format",
+    "formatting",
+    "prettier"
+  ],
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.66.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.1",
+    "typescript": "^4.5.5",
+    "@vscode/test-electron": "^2.1.2"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "setting-switch",
+      "properties": {
+        "自定义配置": {
+          "type": "object",
+          "markdownDescription": "在`“项”`里输入名称，会展示在状态栏；在`“值”`里输入你想切换的配置项。注意：`用逗号分隔多个配置项；只支持值为布尔值的配置项`",
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "default": {
+            "Format": "editor.formatOnPaste,editor.formatOnSave",
+            "Eslint": "eslint.enable"
+          }
+        }
+      }
+    }
+  }
+}
