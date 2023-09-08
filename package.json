@@ -44,7 +44,7 @@
     "@vscode/test-electron": "^2.3.4"
   },
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
