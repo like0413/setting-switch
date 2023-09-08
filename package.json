@@ -6,19 +6,17 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/LeeKer0413/setting-switch.git"
+    "url": "https://github.com/like0413/setting-switch"
   },
-  "publisher": "like",
+  "publisher": "Like",
   "engines": {
     "vscode": "^1.66.0"
   },
   "icon": "icon.png",
   "keywords": [
-    "disable",
-    "toggle",
-    "format",
-    "formatting",
-    "prettier"
+    "like",
+    "setting",
+    "toggle"
   ],
   "categories": [
     "Other",
@@ -62,7 +60,7 @@
             }
           },
           "default": {
-            "Format": "editor.formatOnPaste,editor.formatOnSave",
+            "Format": "editor.formatOnSave,editor.formatOnPaste,editor.formatOnType",
             "Eslint": "eslint.enable"
           }
         }
