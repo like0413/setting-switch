@@ -1,9 +1,9 @@
 import * as vscode from 'vscode'
-import getUserConfig from './getUserConfig'
+import getExtensionConfig from './getExtensionConfig'
 import { CONFIG_NAME } from '../constants'
 
 const getStatus = (key: string) => {
-  const validConfig = getUserConfig(CONFIG_NAME)
+  const validConfig = getExtensionConfig(CONFIG_NAME)
 
   const configuration = vscode.workspace.getConfiguration()
 
