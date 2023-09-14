@@ -2,7 +2,7 @@
   "name": "setting-switch",
   "displayName": "Setting Switch",
   "description": "Pin the button to the statusbar for one-click configuration switching",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "version": "1.1.0",
   "repository": {
     "type": "git",
@@ -32,34 +32,41 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.82.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/vscode": "^1.82.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
+    "@vscode/test-electron": "^2.3.4",
     "eslint": "^8.47.0",
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.6",
-    "@vscode/test-electron": "^2.3.4"
+    "typescript": "^5.1.6"
   },
   "activationEvents": [
     "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
-      "title": "setting-switch",
+      "title": "Setting Switch",
       "properties": {
-        "settingSwitch": {
+        "settingSwitch.boolean": {
           "type": "object",
-          "markdownDescription": "在`项`里输入名称，会展示在状态栏；在`值`里输入你想切换的配置项。\n\n\n注意：`按钮初始状态会根据第一个配置项生成；配置项之间用\",\"分隔。`\n\n\n**Example:**\n\n```json\n\"settingSwitch\": {\n  \"Eslint\": \"eslint.enable\", \n  \"Format\": \"editor.formatOnSave,editor.formatOnPaste\" \n}\n```",
+          "markdownDescription": "值为boolean的配置项\n\n\n**Example:**\n\n```json\n\"settingSwitch.boolean\": {\n  \"Eslint\": \"eslint.enable\", \n  \"Format\": \"editor.formatOnSave,editor.formatOnPaste\" \n}\n```",
           "patternProperties": {
             ".*": {
               "type": "string"
             }
           }
+        },
+        "settingSwitch.string": {
+          "type": "array",
+          "markdownDescription": "值为string的配置项\n\n\n**Example:**\n\n```json\n\"settingSwitch.string\": [\n  {\n    \"text\": \"AutoSave\",\n    \"key\": \"files.autoSave\",\n    \"value\": [\"onWindowChange\", \"onFocusChange\", \"off\"]\n  }\n]\n```"
         }
       }
     }
+  },
+  "dependencies": {
+    "ajv": "^8.12.0"
   }
 }
