@@ -13,8 +13,10 @@ function watchConfigChange_b(context: vscode.ExtensionContext, statusBarMap: any
   let oldStatusBarMap = statusBarMap
 
   vscode.workspace.onDidChangeConfiguration(() => {
+    const configKeys = Object.keys(oldStatusBarMap)
+
     // 用户更改定义的配置项
-    Object.keys(oldStatusBarMap).forEach((key) => {
+    configKeys.forEach((key) => {
       oldStatusBarMap[key].text = generateBtnText(key)
     })
 
@@ -24,18 +26,26 @@ function watchConfigChange_b(context: vscode.ExtensionContext, statusBarMap: any
     }
 
     // 清除按钮
-    Object.keys(oldStatusBarMap).forEach((key) => {
+    configKeys.forEach((key) => {
       oldStatusBarMap[key].hide()
       oldStatusBarMap[key].dispose()
       oldStatusBarMap[key] = null
     })
+    context.subscriptions.forEach((item) => {
+      // @ts-ignore
+      if (configKeys.includes(item.name)) {
+        item.dispose()
+      }
+    })
 
     // 重新生成按钮
-    const newStatusBarMap = generateStatusBarItem()
-    oldStatusBarMap = newStatusBarMap
+    const { statusBarMap_b } = generateStatusBarItem({
+      CONFIG_NAME_B,
+    })
+    oldStatusBarMap = statusBarMap_b
     oldConfig = newConfig
     registerCommand(context, {
-      statusBarMap_b: newStatusBarMap,
+      statusBarMap_b,
     })
   })
 }
@@ -47,8 +57,10 @@ function watchConfigChange_s(context: vscode.ExtensionContext, statusBarMap: any
   let oldStatusBarMap = statusBarMap
 
   vscode.workspace.onDidChangeConfiguration(() => {
+    const configKeys = Object.keys(oldStatusBarMap)
+
     // 用户更改定义的配置项
-    Object.keys(oldStatusBarMap).forEach((key) => {
+    configKeys.forEach((key) => {
       const item = oldStatusBarMap[key].statusBarItem
       item.tooltip = getTooltip(oldStatusBarMap[key].config.key)
     })
@@ -59,20 +71,26 @@ function watchConfigChange_s(context: vscode.ExtensionContext, statusBarMap: any
     }
 
     // 清除按钮
-    Object.keys(oldStatusBarMap).forEach((key) => {
-      const item = oldStatusBarMap[key].statusBarItem
-
-      item[key].hide()
-      item[key].dispose()
-      item[key] = null
+    configKeys.forEach((key) => {
+      oldStatusBarMap[key].statusBarItem.hide()
+      oldStatusBarMap[key].statusBarItem.dispose()
+      oldStatusBarMap[key].statusBarItem = null
+    })
+    context.subscriptions.forEach((item) => {
+      // @ts-ignore
+      if (configKeys.includes(item.name)) {
+        item.dispose()
+      }
     })
 
     // 重新生成按钮
-    const newStatusBarMap = generateStatusBarItem()
-    oldStatusBarMap = newStatusBarMap
+    const { statusBarMap_s } = generateStatusBarItem({
+      CONFIG_NAME_S,
+    })
+    oldStatusBarMap = statusBarMap_s
     oldConfig = newConfig
     registerCommand(context, {
-      statusBarMap_s: newStatusBarMap,
+      statusBarMap_s,
     })
   })
 }

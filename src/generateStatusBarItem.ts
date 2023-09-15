@@ -42,10 +42,10 @@ function generateStatusBarItem_s() {
   return statusBarMap
 }
 
-function generateStatusBarItem() {
-  const statusBarMap_b = generateStatusBarItem_b()
+function generateStatusBarItem({ CONFIG_NAME_B, CONFIG_NAME_S }: any) {
+  const statusBarMap_b = CONFIG_NAME_B && generateStatusBarItem_b()
 
-  const statusBarMap_s = generateStatusBarItem_s()
+  const statusBarMap_s = CONFIG_NAME_S && generateStatusBarItem_s()
 
   return { statusBarMap_b, statusBarMap_s }
 }

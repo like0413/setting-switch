@@ -12,7 +12,7 @@
 {
   "settingSwitch.boolean": {
     "Eslint": "eslint.enable",
-    "Format": "editor.formatOnSave,editor.formatOnPaste" // 配置项之间用`","`分隔
+    "Format": "editor.formatOnSave,editor.formatOnPaste" /* 配置项之间用`","`分隔 */
   }
 }
 ```
@@ -25,9 +25,9 @@
 {
   "settingSwitch.string": [
     {
-      "text": "AutoSave", // 按钮文字
-      "key": "files.autoSave", // 配置项
-      "value": ["onWindowChange", "onFocusChange", "off"] // 自定义选项
+      "text": "AutoSave", /* 按钮文字 /*
+      "key": "files.autoSave", /* 配置项 */
+      "value": ["onWindowChange", "onFocusChange", "off"] /* 自定义选项 */
     }
   ]
 }

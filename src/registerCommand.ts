@@ -22,6 +22,9 @@ function registerCommand_b(context: vscode.ExtensionContext, statusBarMap: any) 
       })
     })
 
+    // @ts-ignore
+    disposable.name = key // 保存key，用于卸载事件
+
     context.subscriptions.push(disposable)
   })
 }
@@ -42,13 +45,20 @@ function registerCommand_s(context: vscode.ExtensionContext, statusBarMap: any) 
       })
     })
 
+    // @ts-ignore
+    disposable.name = item.text // 保存key，用于卸载事件
+
     context.subscriptions.push(disposable)
   })
 }
 
 function registerCommand(context: vscode.ExtensionContext, { statusBarMap_b = {}, statusBarMap_s = {} }) {
-  registerCommand_b(context, statusBarMap_b)
-  registerCommand_s(context, statusBarMap_s)
+  if (Object.keys(statusBarMap_b).length) {
+    registerCommand_b(context, statusBarMap_b)
+  }
+  if (Object.keys(statusBarMap_s).length) {
+    registerCommand_s(context, statusBarMap_s)
+  }
 }
 
 export default registerCommand

@@ -7,7 +7,7 @@ const getStatus = (key: string) => {
 
   const configuration = vscode.workspace.getConfiguration()
 
-  const firstSetting = validConfig[key].split(',')[0]
+  const firstSetting = validConfig[key]?.split(',')[0] ?? ''
 
   return configuration.get(firstSetting, false)
 }
